@@ -15,6 +15,7 @@ const ContentListPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [totalItems, setTotalItems] = useState(0);
   const searchInputRef = useRef(null);
+  const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
 
   const loadMoreData = async (done) => {
     if (data.length >= totalItems) {
@@ -61,14 +62,38 @@ const ContentListPage = () => {
   }, 300);
 
   const handleSearchIconClick = () => {
+    setIsSearchBarVisible(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    searchInputRef.current.focus();
+    const intervalId = setInterval(() => {
+      if (window.scrollY === 0) {
+        clearInterval(intervalId);
+        if (searchInputRef.current) {
+          searchInputRef.current.focus();
+        }
+      }
+    }, 50);
   };
+
+  const handleBackButtonClick = () => {
+    setSearchTerm('');
+    setIsSearchBarVisible(false);
+    searchInputRef.current.value = ''; // Clear the search input
+  };
+
+  useEffect(() => {
+    if (isSearchBarVisible && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [isSearchBarVisible]);
 
   return (
     <div>
-      <Header onSearchIconClick={handleSearchIconClick} />
-      <SearchBar ref={searchInputRef} onSearch={handleSearch} />
+      <Header
+        onSearchIconClick={handleSearchIconClick}
+        onBackButtonClick={handleBackButtonClick}
+        showBackButton={isSearchBarVisible} // Show back button only if search bar is visible
+      />
+      {isSearchBarVisible && <SearchBar ref={searchInputRef} onSearch={handleSearch} />}
       <Suspense fallback={<div>Loading...</div>}>
         {filteredData.length > 0 ? (
           <GridList data={filteredData} searchTerm={searchTerm} />

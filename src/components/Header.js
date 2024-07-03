@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../assets/styles/Header.css';
 
-const Header = ({ onSearchIconClick }) => {
+const Header = ({ onSearchIconClick, onBackButtonClick, showBackButton }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,13 @@ const Header = ({ onSearchIconClick }) => {
 
   return (
     <div className={`header ${isScrolled ? 'scrolled' : ''}`}>
-      <span className="material-icons icon">arrow_back</span>
+      <span
+        className="material-icons icon"
+        onClick={onBackButtonClick}
+        style={{ visibility: showBackButton ? 'visible' : 'hidden' }}
+      >
+        arrow_back
+      </span>
       <div className="title">Romantic Comedy</div>
       <span className="material-icons icon" onClick={onSearchIconClick}>search</span>
     </div>

@@ -1,4 +1,3 @@
-// src/components/GridList.js
 import React from 'react';
 import '../assets/styles/GridList.css';
 import GridItem from './GridItem';
