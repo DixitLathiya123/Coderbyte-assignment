@@ -1,0 +1,31 @@
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for mobile view */
+  gap: 10px; /* Adjust gap for even spacing */
+  padding: 10px; /* Add padding for even spacing */
+  max-width: 100%;
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Restrict horizontal scrolling */
+}
+
+.grid-item {
+  background-color: #2e2e2e; /* Add background color for better visual separation */
+  padding: 10px; /* Add padding inside each grid item */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for better separation */
+  border-radius: 8px; /* Optional: Add border radius for smoother corners */
+  overflow: hidden; /* Ensure content does not overflow the grid item */
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px; /* Optional: Add border radius to images */
+}
+
+.item-title {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}

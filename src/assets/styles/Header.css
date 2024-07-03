@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px; /* Adjust padding for better spacing */
+  background-color: #000; /* Ensure the background is black */
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: box-shadow 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Optional: Add a subtle bottom border */
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8), 0 6px 3px 0 rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(50px); /* Apply blur effect */
+}
+
+.header .title {
+  font-size: 18px; /* Adjust font size for better readability on mobile */
+  font-weight: normal; /* Adjust font weight */
+  flex: 1; /* Ensure title takes up available space */
+  text-align: center; /* Center align the title */
+}
+
+.header .icon {
+  font-size: 24px;
+  cursor: pointer;
+}
