@@ -71,7 +71,7 @@ const ContentListPage = () => {
       <SearchBar ref={searchInputRef} onSearch={handleSearch} />
       <Suspense fallback={<div>Loading...</div>}>
         {filteredData.length > 0 ? (
-          <GridList data={filteredData} />
+          <GridList data={filteredData} searchTerm={searchTerm} />
         ) : (
           <NoRecords />
         )}
